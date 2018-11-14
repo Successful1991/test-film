@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchFilmsService } from '../search-films.service';
+import { FilmInterface } from '../films-interface/film-interface';
 
 @Component({
   selector: 'app-films-list',
@@ -8,7 +9,7 @@ import { SearchFilmsService } from '../search-films.service';
 })
 export class FilmsListComponent implements OnInit {
   constructor(private searchFilmsService: SearchFilmsService) { }
-  listFilms: object;
+  listFilms: FilmInterface;
   filmsImageUrl = this.searchFilmsService.imgUrl;
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class FilmsListComponent implements OnInit {
   }
 
   getDetails(id) {
-    this.searchFilmsService.filmsDetails(id);
+    this.searchFilmsService.filmsDetails('/' + id);
   }
 
 

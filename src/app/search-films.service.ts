@@ -1,8 +1,6 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
-// import { HttpClientModule } from '@angular/common/http';
-
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +21,7 @@ export class SearchFilmsService {
     this.getSearchResult('/search/multi', urlParam, this.handlerListFilms );
   }
   filmsDetails(id) {
-    this.getSearchResult('/movie/' + id, '', this.handlerFilmsDetails );
+    this.getSearchResult('/movie' + id, '', this.handlerFilmsDetails );
   }
   getPopularFilms() {
     this.getSearchResult('/movie/popular', '', this.handlerListFilms );
@@ -42,7 +40,6 @@ export class SearchFilmsService {
   }
 
   handlerFilmsDetails(data) {
-    console.log(data);
     this.detailsFilmsSubject$.emit(data);
   }
 

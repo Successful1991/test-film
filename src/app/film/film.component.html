@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="film" >
-      <img class="mx-auto" src="{{filmImageUrl + film?.poster_path}}" alt="" >
+      <img class="mx-auto" src="{{filmImageUrl + film?.poster_path}}" alt="image" >
       <div *ngIf="film?.name"><span>Название:</span>{{film?.name}}</div>
       <div *ngIf="!film?.name"><span>Название:</span>{{film?.original_title}}</div>
       <div *ngIf="film?.first_air_date"><span>Дата Выхлда:</span>{{film?.first_air_date}}</div>

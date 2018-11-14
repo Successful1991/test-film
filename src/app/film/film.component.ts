@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchFilmsService } from '../search-films.service';
+import { FilmInterface } from '../films-interface/film-interface';
 
 @Component({
   selector: 'app-film',
@@ -7,11 +8,13 @@ import { SearchFilmsService } from '../search-films.service';
   styleUrls: ['./film.component.scss']
 })
 export class FilmComponent implements OnInit {
-  film: object;
+  film: FilmInterface;
   filmImageUrl = this.searchFilmsService.imgUrl;
   constructor(private searchFilmsService: SearchFilmsService ) { }
 
   ngOnInit() {
+    this.searchFilmsService.filmsDetails(window.location.pathname);
+
     this.searchFilmsService.detailsFilmsSubject$.subscribe(
       (list) => {
         this.film = list;
