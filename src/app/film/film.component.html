@@ -1,16 +1,15 @@
 <div class="container">
-  <div class="row">
-    <div class="film col-md-12 justify-content-center"  >
-      <img src="{{filmImageUrl + film?.poster_path}}" alt="" >
-      <div class="col">{{film?.name}}</div>
-      <div class="col">{{film?.first_air_date}}</div>
-      <div class="col">{{film?.overview}}</div>
-      <div class="col">{{film?.popularity}}</div>
-      <div class="col">{{film?.original_title}}</div>
-      <div class="col">{{film?.original_language}}</div>
-      <div class="col">{{film?.release_date}}</div>
-      <div class="col">{{film?.vote_average}}</div>
+  <div class="row justify-content-center">
+    <div class="film" >
+      <img class="mx-auto" src="{{filmImageUrl + film?.poster_path}}" alt="" >
+      <div *ngIf="film?.name"><span>Название:</span>{{film?.name}}</div>
+      <div *ngIf="!film?.name"><span>Название:</span>{{film?.original_title}}</div>
+      <div *ngIf="film?.first_air_date"><span>Дата Выхлда:</span>{{film?.first_air_date}}</div>
+      <div *ngIf="film?.overview"><span>Описание:</span>{{film?.overview}}</div>
+      <div *ngIf="film?.popularity" ><span>Рейтинг:</span>{{film?.popularity}} </div>
 
+      <div *ngIf="film?.original_language"><span>Язык:</span>{{film?.original_language}}</div>
+      <div *ngIf="film?.release_date"><span>Дата Релиза:</span>{{film?.release_date}}</div>
     </div>
   </div>
 </div>

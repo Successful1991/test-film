@@ -12,16 +12,19 @@ export class FilmsListComponent implements OnInit {
   filmsImageUrl = this.searchFilmsService.imgUrl;
 
   ngOnInit() {
+    this.searchFilmsService.getPopularFilms();
     this.searchFilmsService.listFilmsSubject$.subscribe(
       (list) => {
-        console.log(list.results);
+        console.log(list);
         this.listFilms = list.results;
       }
     );
+
   }
 
   getDetails(id) {
     this.searchFilmsService.filmsDetails(id);
   }
+
 
 }

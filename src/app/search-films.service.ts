@@ -23,8 +23,10 @@ export class SearchFilmsService {
     this.getSearchResult('/search/multi', urlParam, this.handlerListFilms );
   }
   filmsDetails(id) {
-    const urlParam = '';
     this.getSearchResult('/movie/' + id, '', this.handlerFilmsDetails );
+  }
+  getPopularFilms() {
+    this.getSearchResult('/movie/popular', '', this.handlerListFilms );
   }
 
   getSearchResult(action, param, handler ) {
