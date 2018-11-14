@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SearchFilmsService } from './search-films.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'search-films';
+  listFilms: object;
+  filmsImageUrl = 'https://image.tmdb.org/t/p/w300/';
+  constructor( private searchFilmsService: SearchFilmsService ) {}
+  search(value) {
+    this.searchFilmsService.searchFilms(value);
+    console.log(this.searchFilmsService.url);
+
+      this.searchFilmsService.listFilmsSubject$.subscribe(
+      (list) => {
+        console.log(list.results);
+        this.listFilms = list.results;
+      }
+    );
+  }
+
+
 }
