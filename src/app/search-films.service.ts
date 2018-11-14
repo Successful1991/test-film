@@ -16,10 +16,12 @@ export class SearchFilmsService {
     private http: HttpClient
   ) { }
   @Injectable()
+
   searchFilms(name) {
     const urlParam = '&query=' + name;
     this.getSearchResult('/search/multi', urlParam, this.handlerListFilms );
   }
+
   filmsDetails(id) {
     this.getSearchResult('/movie' + id, '', this.handlerFilmsDetails );
   }
@@ -28,6 +30,7 @@ export class SearchFilmsService {
   }
 
   getSearchResult(action, param, handler ) {
+    console.log('get');
     this.http.get(
       this.url + action + this.apiKey + param
     ).subscribe(
@@ -36,6 +39,7 @@ export class SearchFilmsService {
   }
 
   handlerListFilms(data) {
+
     this.listFilmsSubject$.emit(data);
   }
 

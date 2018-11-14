@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchFilmsService } from '../search-films.service';
 import { FilmInterface } from '../films-interface/film-interface';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'app-film',
@@ -10,17 +11,30 @@ import { FilmInterface } from '../films-interface/film-interface';
 export class FilmComponent implements OnInit {
   film: FilmInterface;
   filmImageUrl = this.searchFilmsService.imgUrl;
-  constructor(private searchFilmsService: SearchFilmsService ) { }
+  constructor(
+    private searchFilmsService: SearchFilmsService,
+    private localStorage: LocalStorage
+  ) { }
 
   ngOnInit() {
-    this.searchFilmsService.filmsDetails(window.location.pathname);
-
+    this.getFilmStorage();
     this.searchFilmsService.detailsFilmsSubject$.subscribe(
       (list) => {
         this.film = list;
-        console.log(this.film);
+        this.localStorage.setItem( ('/detail/' + this.film.id), this.film ).subscribe(() => {}, () => {console.log('err'); });
       }
     );
   }
+
+  getFilmStorage() {
+    const id = window.location.pathname;
+    if (id) {
+      this.localStorage.getItem<FilmInterface>( id )
+        .subscribe((data) => {
+          this.film = data;
+        });
+    }
+  }
+
 
 }

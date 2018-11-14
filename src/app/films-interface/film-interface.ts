@@ -10,4 +10,5 @@ export interface FilmInterface {
   popularity: number;
   original_language: string;
   release_date: string;
+  id: number;
 }
