@@ -4,8 +4,8 @@
       <img class="mx-auto" src="{{filmImageUrl + film?.poster_path}}" alt="image" >
       <div *ngIf="film?.name"><span>Название:</span>{{film?.name}}</div>
       <div *ngIf="!film?.name"><span>Название:</span>{{film?.original_title}}</div>
-      <div *ngIf="film?.first_air_date"><span>Дата Выхлда:</span>{{film?.first_air_date}}</div>
-      <div *ngIf="film?.overview"><span>Описание:</span>{{film?.overview}}</div>
+      <div *ngIf="film?.first_air_date"><span>Дата Выхода:</span>{{film?.first_air_date}}</div>
+      <div *ngIf="film?.overview" class="film__description"><span>Описание:</span>{{film?.overview}}</div>
       <div *ngIf="film?.popularity" ><span>Рейтинг:</span>{{film?.popularity}} </div>
 
       <div *ngIf="film?.original_language"><span>Язык:</span>{{film?.original_language}}</div>

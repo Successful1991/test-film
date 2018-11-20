@@ -31,6 +31,7 @@ export class FilmComponent implements OnInit {
     if (id) {
       this.localStorage.getItem<FilmInterface>( id )
         .subscribe((data) => {
+        console.log(data);
           this.film = data;
         });
     }

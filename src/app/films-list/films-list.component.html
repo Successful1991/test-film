@@ -7,7 +7,9 @@
     <div *ngIf="film.original_name"><span>Название:</span>{{film?.original_name}}</div>
     <div *ngIf="!film.original_name"><span>Название:</span>{{film?.original_title}}</div>
     <div><span>Дата выхода:</span>{{film?.first_air_date}}</div>
-    <div><span>Описание:</span>{{film?.overview}}</div>
+    <div class="film__description">
+      <!--<span>Описание:</span>-->
+      {{film?.overview}}</div>
     <div><span>Оценка:</span>{{film?.popularity}}</div>
     <button type="button" class="btn btn-primary" (click)="getDetails(film.id)" routerLink="/detail/{{film.id}}">Подробней</button>
   </div>
